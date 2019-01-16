@@ -69,11 +69,12 @@ public class BookController {
 
     @RequestMapping("/deletebook.html")
     public String deleteBook(HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        long bookId = Integer.parseInt(request.getParameter("bookId"));
-        if (bookService.deleteBook(bookId) == 1) {
-            redirectAttributes.addFlashAttribute("succ", "图书删除成功！");
+        long bookId = Long.parseLong(request.getParameter("bookId"));
+        long readerId = Long.parseLong(request.getParameter("readerId"));
+        if (bookService.deleteBook(bookId, readerId) == 1) {
+            redirectAttributes.addFlashAttribute("succ", "记录删除成功！");
         } else {
-            redirectAttributes.addFlashAttribute("error", "图书删除失败！");
+            redirectAttributes.addFlashAttribute("error", "记录删除失败！");
         }
         return "redirect:/allbooks.html";
     }

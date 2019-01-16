@@ -89,7 +89,10 @@
                     <td><c:out value="${alog.readerId}"></c:out></td>
                     <td><c:out value="${alog.lendDate}"></c:out></td>
                     <td><c:out value="${alog.backDate}"></c:out></td>
-                    <td><a href="deletebook.html?bookId=<c:out value="${alog.ser_num}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
+                    <td>
+                        <a href="deletebook.html?bookId=<c:out value="${alog.ser_num}"></c:out>&readerId=<c:out value="${alog.readerId}"></c:out>">">
+                            <button type="button" class="btn btn-danger btn-xs">删除</button>
+                        </a></td>
                 </tr>
             </c:forEach>
             </tbody>

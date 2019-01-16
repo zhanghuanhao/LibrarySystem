@@ -20,6 +20,7 @@ public class ReaderInfoDao {
     private final static String DELETE_READER_INFO_SQL = "DELETE FROM reader_info where reader_id = ? ";
     private final static String GET_READER_INFO_SQL = "SELECT * FROM reader_info where reader_id = ? ";
     private final static String UPDATE_READER_INFO = "UPDATE reader_info set name = ? ,sex = ? ,birth = ? ,address = ? ,phone = ? where reader_id = ? ";
+    private final static String UPDATE_READER_CARD = "UPDATE reader_card set username = ? where reader_id = ? ";
     private final static String ALL_READER_INFO_SQL = "SELECT * FROM reader_info";
 
     private ReaderInfo getInfoFromResult(ResultSet resultSet) throws SQLException {
@@ -71,6 +72,12 @@ public class ReaderInfoDao {
         System.arraycopy(getObjectFromInfo(readerInfo), 0, objects, 0, 5);
         objects[5] = readerId;
         return jdbcTemplate.update(UPDATE_READER_INFO, objects);
+    }
+
+    public int editReaderCard(ReaderInfo readerInfo) {
+        long readerId = readerInfo.getReaderId();
+        String username = readerInfo.getName();
+        return jdbcTemplate.update(UPDATE_READER_INFO, username, readerId);
     }
 
     //返回reader_id

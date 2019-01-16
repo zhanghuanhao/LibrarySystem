@@ -16,8 +16,5 @@ public class ReaderCardService {
     public boolean updatePassword(long readerId, String password){
         return readerCardDao.resetPassword(readerId,password)>0;
     }
-    public boolean updateName(long readerId,String name){
-        return readerCardDao.updateUsername(readerId,name)>0;
-    }
 
 }

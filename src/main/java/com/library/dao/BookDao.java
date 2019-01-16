@@ -18,7 +18,7 @@ public class BookDao {
     private JdbcTemplate jdbcTemplate;
 
     private final static String ADD_BOOK_SQL = "INSERT INTO book_info VALUES(NULL ,?,?,?,?,?,?,?,?,?,?)";
-    private final static String DELETE_BOOK_SQL = "delete from book_info where book_id = ?  ";
+    private final static String DELETE_BOOK_SQL = "delete from lend_list where book_id = ? and reader_id = ? ";
     private final static String EDIT_BOOK_SQL = "update book_info set name= ? ,author= ? ,publish= ? ,ISBN= ? ,introduction= ? ,language= ? ,price= ? ,pub_date= ? ,class_id= ? ,number= ?  where book_id= ? ";
     private final static String QUERY_ALL_BOOKS_SQL = "SELECT * FROM book_info ";
     private final static String QUERY_BOOK_SQL = "SELECT * FROM book_info WHERE book_id like  ?  or name like ?   ";
@@ -86,8 +86,8 @@ public class BookDao {
 
     }
 
-    public int deleteBook(long bookId) {
-        return jdbcTemplate.update(DELETE_BOOK_SQL, bookId);
+    public int deleteBook(long bookId, long readerId) {
+        return jdbcTemplate.update(DELETE_BOOK_SQL, bookId, readerId);
     }
 
     public int addBook(Book book) {

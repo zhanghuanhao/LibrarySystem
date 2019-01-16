@@ -20,8 +20,8 @@ public class BookService {
         return bookDao.getAllBooks();
     }
 
-    public int deleteBook(long bookId){
-        return bookDao.deleteBook(bookId);
+    public int deleteBook(long bookId, long readerId) {
+        return bookDao.deleteBook(bookId, readerId);
     }
 
     public boolean matchBook(String searchWord){

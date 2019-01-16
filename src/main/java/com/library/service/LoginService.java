@@ -22,6 +22,10 @@ public class LoginService {
         return  readerCardDao.getIdMatchCount(readerId, password)>0;
     }
 
+    public String getAdminUsername(long adminId) {
+        return adminDao.getUsername(adminId);
+    }
+
     public ReaderCard findReaderCardByReaderId(long readerId){
         return readerCardDao.findReaderByReaderId(readerId);
     }
@@ -30,7 +34,7 @@ public class LoginService {
     }
 
     public boolean hasMatchAdmin(long adminId,String password){
-        return adminDao.getIdMatchCount(adminId,password)==1;
+        return adminDao.getMatchCount(adminId, password) == 1;
     }
 
     public boolean adminRePassword(long adminId, String newPassword){

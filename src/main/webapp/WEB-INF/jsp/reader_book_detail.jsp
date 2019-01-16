@@ -65,10 +65,10 @@
                 </tr>
                 <tr>
                     <th>状态</th>
-                    <c:if test="${detail.state==1}">
+                    <c:if test="${detail.number>1}">
                         <td>在馆</td>
                     </c:if>
-                    <c:if test="${detail.state==0}">
+                    <c:if test="${detail.number==0}">
                         <td>借出</td>
                     </c:if>
 

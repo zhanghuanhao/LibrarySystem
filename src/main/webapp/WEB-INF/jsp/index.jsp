@@ -38,8 +38,8 @@
     </div>
     <div class="panel-body">
         <div class="form-group">
-            <label for="id">用户名</label>
-            <input type="text" class="form-control" id="id" placeholder="请输入用户名">
+            <label for="id">账号</label>
+            <input type="text" class="form-control" id="id" placeholder="请输入账号">
         </div>
         <div class="form-group">
             <label for="passwd">密码</label>
@@ -96,11 +96,7 @@
             var id =$("#id").val();
             var passwd=$("#passwd").val();
             var remember=$("#remember").prop('checked');
-
-            if( id=='' && passwd==''){
-                $("#info").text("提示:账号和密码不能为空");
-            }
-            else if ( id ==''){
+            if (id == '') {
                 $("#info").text("提示:账号不能为空");
             }
             else if( passwd ==''){
@@ -119,12 +115,12 @@
                     },
                     dataType: "json",
                     success: function(data) {
-                        if(data.stateCode.trim() == "0") {
+                        if (data.stateCode.trim() === "0") {
                             $("#info").text("提示:账号或密码错误！");
-                        } else if(data.stateCode.trim() == "1") {
+                        } else if (data.stateCode.trim() === "1") {
                             $("#info").text("提示:登陆成功，跳转中...");
                             window.location.href="/admin_main.html";
-                        } else if(data.stateCode.trim() == "2"){
+                        } else if (data.stateCode.trim() === "2") {
                             if(remember){
                                 rememberLogin(id,passwd,remember);
                             }else {

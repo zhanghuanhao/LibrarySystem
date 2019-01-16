@@ -48,8 +48,8 @@ public class ReaderController {
 
     @RequestMapping("allreaders.html")
     public ModelAndView allBooks() {
-            ArrayList<ReaderInfo> readers = readerInfoService.readerInfos();
-            ModelAndView modelAndView = new ModelAndView("admin_readers");
+        ArrayList<ReaderInfo> readers = readerInfoService.readerInfos();
+        ModelAndView modelAndView = new ModelAndView("admin_readers");
         modelAndView.addObject("readers", readers);
         return modelAndView;
     }
@@ -87,7 +87,7 @@ public class ReaderController {
     public String readerInfoEditDo(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {
         long readerId = Long.parseLong(request.getParameter("readerId"));
         ReaderInfo readerInfo = getReaderInfo(readerId, name, sex, birth, address, phone);
-        if (readerInfoService.editReaderInfo(readerInfo)) {
+        if (readerInfoService.editReaderInfo(readerInfo) && readerInfoService.editReaderCard(readerInfo)) {
             redirectAttributes.addFlashAttribute("succ", "读者信息修改成功！");
         } else {
             redirectAttributes.addFlashAttribute("error", "读者信息修改失败！");
@@ -155,7 +155,7 @@ public class ReaderController {
     public String readerInfoEditDoReader(HttpServletRequest request, String name, String sex, String birth, String address, String phone, RedirectAttributes redirectAttributes) {
         ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute("readercard");
         ReaderInfo readerInfo = getReaderInfo(readerCard.getReaderId(), name, sex, birth, address, phone);
-        if (readerInfoService.editReaderInfo(readerInfo)) {
+        if (readerInfoService.editReaderInfo(readerInfo) && readerInfoService.editReaderCard(readerInfo)) {
             ReaderCard readerCardNew = loginService.findReaderCardByReaderId(readerCard.getReaderId());
             request.getSession().setAttribute("readercard", readerCardNew);
             redirectAttributes.addFlashAttribute("succ", "信息修改成功！");

@@ -13,13 +13,6 @@
             overflow: visible;
             background-color: rgb(240,242,245);
         }
-        #newsa{
-            width:500px;
-            height: 200px;
-            position: fixed;
-            left: 35%;
-            top:30%;
-        }
     </style>
     <script>
         $(function () {

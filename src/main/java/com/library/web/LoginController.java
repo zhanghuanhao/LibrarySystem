@@ -49,22 +49,24 @@ public class LoginController {
         String passwd = request.getParameter("passwd");
         boolean isReader = loginService.hasMatchReader(id, passwd);
         boolean isAdmin = loginService.hasMatchAdmin(id, passwd);
-        HashMap<String, String> res = new HashMap<String, String>();
-        if (isAdmin == false && isReader == false) {
-            res.put("stateCode", "0");
-            res.put("msg", "账号或密码错误！");
-        } else if (isAdmin) {
+        HashMap<String, String> res = new HashMap<>();
+        if (isAdmin) {
             Admin admin = new Admin();
             admin.setAdminId(id);
             admin.setPassword(passwd);
+            String username = loginService.getAdminUsername(id);
+            admin.setUsername(username);
             request.getSession().setAttribute("admin", admin);
             res.put("stateCode", "1");
             res.put("msg", "管理员登陆成功！");
-        } else {
+        } else if (isReader) {
             ReaderCard readerCard = loginService.findReaderCardByReaderId(id);
             request.getSession().setAttribute("readercard", readerCard);
             res.put("stateCode", "2");
             res.put("msg", "读者登陆成功！");
+        } else {
+            res.put("stateCode", "0");
+            res.put("msg", "账号或密码错误！");
         }
         return res;
     }
@@ -78,7 +80,6 @@ public class LoginController {
 
     @RequestMapping("/reader_main.html")
     public ModelAndView toReaderMain(HttpServletResponse response) {
-
         return new ModelAndView("reader_main");
     }
 
