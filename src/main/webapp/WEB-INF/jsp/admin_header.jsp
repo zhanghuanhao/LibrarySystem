@@ -44,9 +44,9 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login.html"><span class="glyphicon glyphicon-user"></span>${admin.username}, 已登录</a>
+                <li><a href="login.html">${admin.username}, 已登录</a>
                 </li>
-                <li><a href="logout.html"><span class="glyphicon glyphicon-log-in"></span>退出</a></li>
+                <li><a href="logout.html">退出</a></li>
             </ul>
         </div>
     </div>

@@ -17,7 +17,7 @@
     </script>
 </head>
 <body>
-<div id="header"></div>
+<div id="header" style="padding-bottom: 80px"></div>
 <div class="col-xs-5 col-md-offset-3">
     <div class="panel panel-default">
         <div class="panel-heading">

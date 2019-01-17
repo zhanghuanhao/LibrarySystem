@@ -1,4 +1,3 @@
-<%@ page import="com.library.domain.Book" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -20,8 +19,6 @@
 </head>
 <body>
 <div id="header"></div>
-
-
 <div style="padding: 30px 550px 10px">
     <form   method="post" action="reader_querybook_do.html" class="form-inline"  id="searchform">
         <div class="input-group">

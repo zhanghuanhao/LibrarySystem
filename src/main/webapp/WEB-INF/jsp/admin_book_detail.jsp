@@ -18,9 +18,9 @@
     </script>
 </head>
 <body>
-<div id="header"></div>
+<div id="header" style="padding-bottom: 80px"></div>
 
-<div class="col-xs-6 col-md-offset-3" style="margin-top: 5%">
+<div class="col-xs-6 col-md-offset-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">《 ${detail.name}》</h3>

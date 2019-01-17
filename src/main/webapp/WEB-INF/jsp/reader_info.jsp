@@ -18,7 +18,7 @@
     </script>
 </head>
 <body>
-<div id="header"></div>
+<div id="header" style="padding-bottom: 80px"></div>
 <c:if test="${!empty succ}">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert"

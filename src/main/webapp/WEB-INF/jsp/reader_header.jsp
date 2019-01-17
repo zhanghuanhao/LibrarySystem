@@ -28,8 +28,8 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="reader_info.html"><span class="glyphicon glyphicon-user"></span>${readercard.name}, 已登录</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>退出</a></li>
+                <li><a href="reader_info.html">${readercard.name}, 已登录</a></li>
+                <li><a href="login.html">退出</a></li>
             </ul>
         </div>
     </div>

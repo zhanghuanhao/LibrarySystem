@@ -18,8 +18,9 @@
 </head>
 <body>
 
-<div id="header"></div>
-<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 10%">
+<div id="header" style="padding-bottom: 80px"></div>
+
+<div class="col-xs-6 col-md-offset-3" style="position: relative;">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">编辑《 ${detail.name}》</h3>

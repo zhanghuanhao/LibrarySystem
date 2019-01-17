@@ -18,7 +18,6 @@
     </script>
 </head>
 <body>
-
 <div id="header"></div>
 
 <div style="padding: 70px 550px 10px">

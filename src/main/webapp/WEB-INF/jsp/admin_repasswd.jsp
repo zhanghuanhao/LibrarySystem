@@ -18,9 +18,8 @@
     </script>
 </head>
 <body>
-
-<div id="header"></div>
-<div style="position: relative;top: 15%">
+<div id="header" style="padding-bottom: 100px"></div>
+<div style="position: relative">
     <c:if test="${!empty succ}">
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert"
@@ -40,7 +39,7 @@
         </div>
     </c:if>
 </div>
-<div class="col-xs-6 col-md-offset-3" style="position: relative;top: 25%">
+<div class="col-xs-6 col-md-offset-3" style="position: relative;">
     <div class="panel panel-primary " >
         <div class="panel-heading">
             <h3 class="panel-title">密码修改</h3>
