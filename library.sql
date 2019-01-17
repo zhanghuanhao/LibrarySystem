@@ -1,5 +1,6 @@
 CREATE DATABASE library;
 USE library;
+set names utf8;
 START TRANSACTION;
 CREATE TABLE `admin` ( `admin_id` BIGINT NOT NULL PRIMARY KEY, `password` VARCHAR ( 15 ) NOT NULL, `username` VARCHAR ( 15 ) DEFAULT NULL ) ENGINE = INNODB DEFAULT CHARSET = utf8;
 INSERT INTO `admin`
