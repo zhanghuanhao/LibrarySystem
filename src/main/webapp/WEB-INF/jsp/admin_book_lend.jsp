@@ -38,13 +38,10 @@
                 <br/>
                 <input type="submit" value="确定" class="btn btn-success btn-sm" class="text-left">
                 <script>
-                    function mySubmit(flag){
-                        return flag;
-                    }
                     $("#lendbook").submit(function () {
                         if($("#name").val()==''||$("#readerId").val()==''){
                             alert("请填入完整图书信息！");
-                            return mySubmit(false);
+                            return false;
                         }
                     })
                 </script>

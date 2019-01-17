@@ -129,7 +129,6 @@
                             $("#info").text("提示:登陆成功，跳转中...");
                             window.location.href="/reader_main.html";
 
-
                         }
                     }
                 });

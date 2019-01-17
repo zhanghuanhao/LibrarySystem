@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
                 <li class="active">
-                    <a href="reader_querybook.html" >
+                    <a href="reader_books.html">
                         图书查询
                     </a>
                 </li>

@@ -70,13 +70,10 @@
                 </div>
                 <input type="submit" value="确定" class="btn btn-success btn-sm" class="text-left">
                 <script>
-                    function mySubmit(flag){
-                        return flag;
-                    }
                     $("#addbook").submit(function () {
                         if($("#name").val()==''||$("#author").val()==''||$("#publish").val()==''||$("#isbn").val()==''||$("#introduction").val()==''||$("#language").val()==''||$("#price").val()==''||$("#pubstr").val()==''||$("#classId").val()==''||$("#number").val()==''){
                             alert("请填入完整图书信息！");
-                            return mySubmit(false);
+                            return false;
                         }
                     })
                 </script>

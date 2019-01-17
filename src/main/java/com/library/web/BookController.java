@@ -42,9 +42,9 @@ public class BookController {
         }
     }
 
-    @RequestMapping("/reader_querybook.html")
+    @RequestMapping("/reader_books.html")
     public ModelAndView readerQueryBook() {
-        return new ModelAndView("reader_book_query");
+        return new ModelAndView("reader_books");
 
     }
 
@@ -67,20 +67,8 @@ public class BookController {
         return modelAndView;
     }
 
-    @RequestMapping("/deletebook.html")
-    public String deleteBook(HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        long bookId = Long.parseLong(request.getParameter("bookId"));
-        long readerId = Long.parseLong(request.getParameter("readerId"));
-        if (bookService.deleteBook(bookId, readerId) == 1) {
-            redirectAttributes.addFlashAttribute("succ", "记录删除成功！");
-        } else {
-            redirectAttributes.addFlashAttribute("error", "记录删除失败！");
-        }
-        return "redirect:/allbooks.html";
-    }
-
     @RequestMapping("/book_add.html")
-    public ModelAndView addBook(HttpServletRequest request) {
+    public ModelAndView addBook() {
         return new ModelAndView("admin_book_add");
     }
 

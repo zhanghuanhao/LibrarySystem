@@ -86,13 +86,11 @@ public class LoginController {
 
     @RequestMapping("/admin_repasswd.html")
     public ModelAndView reAdminPasswd() {
-
         return new ModelAndView("admin_repasswd");
     }
 
     @RequestMapping("/admin_repasswd_do")
     public String reAdminPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {
-
         Admin admin = (Admin) request.getSession().getAttribute("admin");
         long id = admin.getAdminId();
         String password = loginService.getAdminPassword(id);
@@ -109,14 +107,10 @@ public class LoginController {
             return "redirect:/admin_repasswd.html";
         }
     }
-
-    ;
-
     //配置404页面
     @RequestMapping("*")
     public String notFind() {
         return "404";
     }
-
 
 }

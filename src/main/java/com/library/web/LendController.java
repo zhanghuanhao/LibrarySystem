@@ -51,9 +51,19 @@ public class LendController {
         return "redirect:/allbooks.html";
     }
 
+    @RequestMapping("/deletebook.html")
+    public String deleteBook(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        long serNum = Long.parseLong(request.getParameter("serNum"));
+        if (lendService.deleteBook(serNum) == 1) {
+            redirectAttributes.addFlashAttribute("succ", "记录删除成功！");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "记录删除失败！");
+        }
+        return "redirect:/lendlist.html";
+    }
 
     @RequestMapping("/lendlist.html")
-    public ModelAndView lendList() {
+    public ModelAndView lendList(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("admin_lend_list");
         modelAndView.addObject("list", lendService.lendList());
         return modelAndView;

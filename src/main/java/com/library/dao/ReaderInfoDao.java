@@ -77,10 +77,10 @@ public class ReaderInfoDao {
     public int editReaderCard(ReaderInfo readerInfo) {
         long readerId = readerInfo.getReaderId();
         String username = readerInfo.getName();
-        return jdbcTemplate.update(UPDATE_READER_INFO, username, readerId);
+        return jdbcTemplate.update(UPDATE_READER_CARD, username, readerId);
     }
 
-    //返回reader_id
+
     public long addReaderInfo(ReaderInfo readerInfo) {
         Object[] objects = getObjectFromInfo(readerInfo);
         if (jdbcTemplate.update(ADD_READER_INFO_SQL, objects) > 0) {

@@ -48,13 +48,10 @@
                 </div>
                 <input type="submit" value="确定" class="btn btn-success btn-sm" class="text-left">
                 <script>
-                    function mySubmit(flag){
-                        return flag;
-                    }
                     $("#readeredit").submit(function () {
                         if($("#name").val()==''||$("#sex").val()==''||$("#birth").val()==''||$("#address").val()==''||$("#phone").val()==''){
                             alert("请填入完整读者信息！");
-                            return mySubmit(false);
+                            return false;
                         }
                     })
                 </script>

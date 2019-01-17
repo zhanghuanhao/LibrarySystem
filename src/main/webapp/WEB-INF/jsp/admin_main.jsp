@@ -43,8 +43,8 @@
                 <button type="button" class="btn btn-primary" data-dismiss="modal">知道了
                 </button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        </div>
+    </div>
 </div>
 <c:if test="${!empty login}">
     <script>

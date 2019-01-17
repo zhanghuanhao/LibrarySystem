@@ -60,12 +60,7 @@
         </div>
     </div>
 </div>
-
     <script>
-        function mySubmit(flag){
-            return flag;
-        }
-
         $(document).keyup(function () {
             if($("#newPasswd").val()!=$("#reNewPasswd").val()&&$("#newPasswd").val()!=""&&$("#reNewPasswd").val()!=""&&$("#newPasswd").val().length==$("#reNewPasswd").val().length){
                 $("#tishi").text("两次输入的新密码不同，请检查");
@@ -78,14 +73,13 @@
         $("#repasswd").submit(function () {
             if($("#oldPasswd").val()==''||$("#newPasswd").val()==''||$("#reNewPasswd").val()==''){
                 $("#tishi").text("请填写完毕后提交");
-                return mySubmit(false);
+                return false;
             }
             else if($("#newPasswd").val()!=$("#reNewPasswd").val()){
                 $("#tishi").text("两次输入的新密码不同，请检查");
-                return mySubmit(false);
+                return false;
             }
         })
     </script>
-
 </body>
 </html>

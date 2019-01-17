@@ -27,4 +27,8 @@ public class LendService {
         return lendDao.myLendList(readerId);
     }
 
+    public int deleteBook(long serNum) {
+        return lendDao.deleteBook(serNum);
+    }
+
 }

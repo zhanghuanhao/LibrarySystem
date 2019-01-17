@@ -5,10 +5,10 @@
     <title>借还日志</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
     <style>
-        body{
-            background-color: rgb(240,242,245);
+        body {
+            background-color: rgb(240, 242, 245);
         }
     </style>
     <script>
@@ -21,23 +21,21 @@
 <div id="header"></div>
 
 <div style="padding: 70px 550px 10px">
-    <form   method="post" action="querybook.html" class="form-inline"  id="searchform">
+    <form method="post" action="querybook.html" class="form-inline" id="searchform">
         <div class="input-group">
-            <input type="text" placeholder="输入图书名" class="form-control" id="search" name="searchWord" class="form-control">
+            <input type="text" placeholder="输入图书名" class="form-control" id="search" name="searchWord"
+                   class="form-control">
             <span class="input-group-btn">
                             <input type="submit" value="搜索" class="btn btn-default">
             </span>
         </div>
     </form>
     <script>
-        function mySubmit(flag){
-            return flag;
-        }
         $("#searchform").submit(function () {
-            var val=$("#search").val();
-            if(val==''){
+            var val = $("#search").val();
+            if (val == '') {
                 alert("请输入关键字");
-                return mySubmit(false);
+                return false;
             }
         })
     </script>
@@ -89,9 +87,15 @@
                     <td><c:out value="${alog.lendDate}"></c:out></td>
                     <td><c:out value="${alog.backDate}"></c:out></td>
                     <td>
-                        <a href="deletebook.html?bookId=<c:out value="${alog.ser_num}"></c:out>&readerId=<c:out value="${alog.readerId}"></c:out>">">
-                            <button type="button" class="btn btn-danger btn-xs">删除</button>
-                        </a></td>
+                        <a href="deletebook.html?serNum=<c:out value='${alog.ser_num}'></c:out>">
+                            <c:if test="${alog.backDate}">
+                                <button type="button" class="btn btn-danger btn-xs">删除</button>
+                            </c:if>
+                            <c:if test="${empty alog.backDate}">
+                                <button type="button" class="btn btn-default btn-xs" disabled="disabled">删除</button>
+                            </c:if>
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
