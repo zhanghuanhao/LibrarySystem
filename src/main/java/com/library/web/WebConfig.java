@@ -15,11 +15,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("com.library.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
-
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/views/");
         resolver.setSuffix(".jsp");
         return resolver;
     }
@@ -32,7 +30,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/img/**")
-                .addResourceLocations("/static/images/");
+                .addResourceLocations("/static/img/");
         registry.addResourceHandler("/js/**").addResourceLocations("/static/js/");
         registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
     }

@@ -12,27 +12,32 @@ public class BookService {
     @Autowired
     private BookDao bookDao;
 
-    public ArrayList<Book> queryBook(String searchWord){
-        return  bookDao.queryBook(searchWord);
+    public ArrayList<Book> queryBook(String searchWord) {
+        return bookDao.queryBook(searchWord);
     }
 
-    public ArrayList<Book> getAllBooks(){
+    public ArrayList<Book> getAllBooks() {
         return bookDao.getAllBooks();
     }
 
-    public boolean matchBook(String searchWord){
-        return bookDao.matchBook(searchWord)>0;
+    public boolean matchBook(String searchWord) {
+        return bookDao.matchBook(searchWord) > 0;
     }
 
-    public boolean addBook(Book book){
-        return bookDao.addBook(book)>0;
+    public boolean addBook(Book book) {
+        return bookDao.addBook(book) > 0;
     }
 
-    public Book getBook(Long bookId){
+    public Book getBook(Long bookId) {
         return bookDao.getBook(bookId);
     }
-    public boolean editBook(Book book){
-        return bookDao.editBook(book)>0;
+
+    public boolean editBook(Book book) {
+        return bookDao.editBook(book) > 0;
+    }
+
+    public boolean deleteBook(Long bookId) {
+        return bookDao.deleteBook(bookId) > 0;
     }
 
 }

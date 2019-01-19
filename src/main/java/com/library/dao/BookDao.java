@@ -23,6 +23,7 @@ public class BookDao {
     private final static String QUERY_BOOK_SQL = "SELECT * FROM book_info WHERE book_id like  ?  or name like ?   ";
     private final static String MATCH_BOOK_SQL = "SELECT count(*) FROM book_info WHERE book_id like ?  or name like ?  ";
     private final static String GET_BOOK_SQL = "SELECT * FROM book_info where book_id = ? ";
+    private final static String DELETE_BOOK_SQL = "DELETE FROM book_info where book_id = ? ";
 
     public int matchBook(String searchWord) {
         String search = "%" + searchWord + "%";
@@ -82,7 +83,6 @@ public class BookDao {
             }
         });
         return books;
-
     }
 
     public int addBook(Book book) {
@@ -106,4 +106,7 @@ public class BookDao {
         return jdbcTemplate.update(EDIT_BOOK_SQL, objects);
     }
 
+    public int deleteBook(long bookId) {
+        return jdbcTemplate.update(DELETE_BOOK_SQL, bookId);
+    }
 }

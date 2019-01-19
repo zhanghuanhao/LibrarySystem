@@ -107,6 +107,31 @@ public class LoginController {
             return "redirect:/admin_repasswd.html";
         }
     }
+
+    @RequestMapping("/reader_repasswd.html")
+    public ModelAndView reReaderPasswd() {
+        return new ModelAndView("reader_repasswd");
+    }
+
+    @RequestMapping("/reader_repasswd_do")
+    public String reReaderPasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {
+        ReaderCard reader = (ReaderCard) request.getSession().getAttribute("readercard");
+        long id = reader.getReaderId();
+        String password = loginService.getReaderPassword(id);
+        if (password.equals(oldPasswd)) {
+            if (loginService.readerRePassword(id, newPasswd)) {
+                redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
+                return "redirect:/reader_repasswd.html";
+            } else {
+                redirectAttributes.addFlashAttribute("error", "密码修改失败！");
+                return "redirect:/reader_repasswd.html";
+            }
+        } else {
+            redirectAttributes.addFlashAttribute("error", "旧密码错误！");
+            return "redirect:/reader_repasswd.html";
+        }
+    }
+
     //配置404页面
     @RequestMapping("*")
     public String notFind() {

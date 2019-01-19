@@ -23,7 +23,7 @@ public class LendDao {
     private final static String LEND_BOOK_TWO_SQL = "UPDATE book_info SET number = number - 1 WHERE book_id = ? ";
     private final static String LEND_LIST_SQL = "SELECT * FROM lend_list";
     private final static String MY_LEND_LIST_SQL = "SELECT * FROM lend_list WHERE reader_id = ? ";
-    private final static String DELETE_BOOK_SQL = "DELETE FROM lend_list WHERE ser_num = ?";
+    private final static String DELETE_LEND_SQL = "DELETE FROM lend_list WHERE ser_num = ?";
 
     public int returnBookOne(long bookId, long readerId) {
         return jdbcTemplate.update(RETURN_BOOK_ONE_SQL, df.format(new Date()), bookId, readerId);
@@ -73,7 +73,7 @@ public class LendDao {
         return list;
     }
 
-    public int deleteBook(long serNum) {
-        return jdbcTemplate.update(DELETE_BOOK_SQL, serNum);
+    public int deleteLend(long serNum) {
+        return jdbcTemplate.update(DELETE_LEND_SQL, serNum);
     }
 }

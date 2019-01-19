@@ -5,19 +5,16 @@
     <title>更改密码</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
-    <style>
-        body{
-            background-color: rgb(240,242,245);
-        }
-    </style>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $('#header').load('admin_header.html');
         })
     </script>
 </head>
-<body>
+<body background="img/book2.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 <div id="header" style="padding-bottom: 100px"></div>
 <div style="position: relative">
     <c:if test="${!empty succ}">
@@ -40,46 +37,47 @@
     </c:if>
 </div>
 <div class="col-xs-6 col-md-offset-3" style="position: relative;">
-    <div class="panel panel-primary " >
+    <div class="panel panel-primary ">
         <div class="panel-heading">
             <h3 class="panel-title">密码修改</h3>
         </div>
         <div class="panel-body">
-            <form   method="post" action="admin_repasswd_do" class="form-inline"  id="repasswd" >
+            <form method="post" action="admin_repasswd_do" class="form-inline" id="repasswd">
                 <div class="input-group">
-                    <input type="password" id="oldPasswd" name="oldPasswd" placeholder="输入旧密码" class="form-control"  class="form-control">
-                    <input type="password" id="newPasswd" name="newPasswd" placeholder="输入新密码" class="form-control"  class="form-control">
-                    <input type="password" id="reNewPasswd" name="reNewPasswd" placeholder="再次输入新密码" class="form-control"  class="form-control">
+                    <input type="password" id="oldPasswd" name="oldPasswd" placeholder="输入旧密码" class="form-control"
+                           class="form-control">
+                    <input type="password" id="newPasswd" name="newPasswd" placeholder="输入新密码" class="form-control"
+                           class="form-control">
+                    <input type="password" id="reNewPasswd" name="reNewPasswd" placeholder="再次输入新密码"
+                           class="form-control" class="form-control">
                     <em id="tishi" style="color: red"></em>
                     <br/>
                     <span>
                             <input type="submit" value="提交" class="btn btn-default">
-            </span>
+                    </span>
                 </div>
             </form>
         </div>
     </div>
 </div>
-    <script>
-        $(document).keyup(function () {
-            if($("#newPasswd").val()!=$("#reNewPasswd").val()&&$("#newPasswd").val()!=""&&$("#reNewPasswd").val()!=""&&$("#newPasswd").val().length==$("#reNewPasswd").val().length){
-                $("#tishi").text("两次输入的新密码不同，请检查");
-            }
-            else {
-                $("#tishi").text("");
-            }
-        })
+<script>
+    $(document).keyup(function () {
+        if ($("#newPasswd").val() != $("#reNewPasswd").val() && $("#newPasswd").val() != "" && $("#reNewPasswd").val() != "" && $("#newPasswd").val().length == $("#reNewPasswd").val().length) {
+            $("#tishi").text("两次输入的新密码不同，请检查");
+        } else {
+            $("#tishi").text("");
+        }
+    })
 
-        $("#repasswd").submit(function () {
-            if($("#oldPasswd").val()==''||$("#newPasswd").val()==''||$("#reNewPasswd").val()==''){
-                $("#tishi").text("请填写完毕后提交");
-                return false;
-            }
-            else if($("#newPasswd").val()!=$("#reNewPasswd").val()){
-                $("#tishi").text("两次输入的新密码不同，请检查");
-                return false;
-            }
-        })
-    </script>
+    $("#repasswd").submit(function () {
+        if ($("#oldPasswd").val() == '' || $("#newPasswd").val() == '' || $("#reNewPasswd").val() == '') {
+            $("#tishi").text("请填写完毕后提交");
+            return false;
+        } else if ($("#newPasswd").val() != $("#reNewPasswd").val()) {
+            $("#tishi").text("两次输入的新密码不同，请检查");
+            return false;
+        }
+    })
+</script>
 </body>
 </html>

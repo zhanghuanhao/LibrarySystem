@@ -100,35 +100,6 @@ public class ReaderController {
         return new ModelAndView("admin_reader_add");
     }
 
-    @RequestMapping("reader_repasswd.html")
-    public ModelAndView readerRePasswd() {
-        return new ModelAndView("reader_repasswd");
-    }
-
-    @RequestMapping("reader_repasswd_do.html")
-    public String readerRePasswdDo(HttpServletRequest request, String oldPasswd, String newPasswd, String reNewPasswd, RedirectAttributes redirectAttributes) {
-        ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute("readercard");
-        long readerId = readerCard.getReaderId();
-        String passord = readerCard.getPassword();
-        if (newPasswd.equals(reNewPasswd)) {
-            if (passord.equals(oldPasswd)) {
-                if (readerCardService.updatePassword(readerId, newPasswd)) {
-                    ReaderCard readerCardNew = loginService.findReaderCardByReaderId(readerId);
-                    request.getSession().setAttribute("readercard", readerCardNew);
-                    redirectAttributes.addFlashAttribute("succ", "密码修改成功！");
-                } else {
-                    redirectAttributes.addFlashAttribute("succ", "密码修改失败！");
-                }
-            } else {
-                redirectAttributes.addFlashAttribute("error", "修改失败,原密码错误");
-            }
-        } else {
-            redirectAttributes.addFlashAttribute("error", "修改失败,两次输入的新密码不相同");
-        }
-        return "redirect:/reader_repasswd.html";
-
-    }
-
     @RequestMapping("reader_add_do.html")
     public String readerInfoAddDo(String name, String sex, String birth, String address, String phone, String password, RedirectAttributes redirectAttributes) {
         ReaderInfo readerInfo = getReaderInfo(0, name, sex, birth, address, phone);

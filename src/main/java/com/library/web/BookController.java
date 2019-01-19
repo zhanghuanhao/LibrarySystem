@@ -1,7 +1,10 @@
 package com.library.web;
 
 import com.library.domain.Book;
+import com.library.domain.Lend;
+import com.library.domain.ReaderCard;
 import com.library.service.BookService;
+import com.library.service.LendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,8 @@ import java.util.Date;
 public class BookController {
     @Autowired
     private BookService bookService;
+    @Autowired
+    private LendService lendService;
 
     private Date getDate(String pubstr) {
         try {
@@ -42,25 +47,20 @@ public class BookController {
         }
     }
 
-    @RequestMapping("/reader_books.html")
-    public ModelAndView readerQueryBook() {
-        return new ModelAndView("reader_books");
-
-    }
-
     @RequestMapping("/reader_querybook_do.html")
-    public String readerQueryBookDo(String searchWord, RedirectAttributes redirectAttributes) {
+    public ModelAndView readerQueryBookDo(String searchWord) {
         if (bookService.matchBook(searchWord)) {
             ArrayList<Book> books = bookService.queryBook(searchWord);
-            redirectAttributes.addFlashAttribute("books", books);
+            ModelAndView modelAndView = new ModelAndView("reader_books");
+            modelAndView.addObject("books", books);
+            return modelAndView;
         } else {
-            redirectAttributes.addFlashAttribute("error", "没有匹配的图书！");
+            return new ModelAndView("reader_books", "error", "没有匹配的图书");
         }
-        return "redirect:/reader_querybook.html";
     }
 
-    @RequestMapping("/allbooks.html")
-    public ModelAndView allBook() {
+    @RequestMapping("/admin_books.html")
+    public ModelAndView adminBooks() {
         ArrayList<Book> books = bookService.getAllBooks();
         ModelAndView modelAndView = new ModelAndView("admin_books");
         modelAndView.addObject("books", books);
@@ -80,7 +80,7 @@ public class BookController {
         } else {
             redirectAttributes.addFlashAttribute("succ", "图书添加失败！");
         }
-        return "redirect:/allbooks.html";
+        return "redirect:/admin_books.html";
     }
 
     @RequestMapping("/updatebook.html")
@@ -100,7 +100,7 @@ public class BookController {
         } else {
             redirectAttributes.addFlashAttribute("error", "图书修改失败！");
         }
-        return "redirect:/allbooks.html";
+        return "redirect:/admin_books.html";
     }
 
     @RequestMapping("/bookdetail.html")
@@ -129,5 +129,23 @@ public class BookController {
     @RequestMapping("/reader_header.html")
     public ModelAndView reader_header() {
         return new ModelAndView("reader_header");
+    }
+
+    @RequestMapping("/reader_books.html")
+    public ModelAndView readerBooks(HttpServletRequest request) {
+        ArrayList<Book> books = bookService.getAllBooks();
+        ReaderCard readerCard = (ReaderCard) request.getSession().getAttribute("readercard");
+        ArrayList<Lend> myAllLendList = lendService.myLendList(readerCard.getReaderId());
+        ArrayList<Long> myLendList = new ArrayList<>();
+        for (Lend lend : myAllLendList) {
+            // 是否已归还
+            if (lend.getBackDate() == null) {
+                myLendList.add(lend.getBookId());
+            }
+        }
+        ModelAndView modelAndView = new ModelAndView("reader_books");
+        modelAndView.addObject("books", books);
+        modelAndView.addObject("myLendList", myLendList);
+        return modelAndView;
     }
 }

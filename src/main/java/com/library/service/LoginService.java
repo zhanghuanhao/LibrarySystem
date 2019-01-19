@@ -2,9 +2,7 @@ package com.library.service;
 
 import com.library.dao.AdminDao;
 import com.library.dao.ReaderCardDao;
-import com.library.dao.ReaderInfoDao;
 import com.library.domain.ReaderCard;
-import com.library.domain.ReaderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +11,6 @@ public class LoginService {
 
     @Autowired
     private ReaderCardDao readerCardDao;
-    @Autowired
-    private ReaderInfoDao readerInfoDao;
     @Autowired
     private AdminDao adminDao;
 
@@ -29,9 +25,6 @@ public class LoginService {
     public ReaderCard findReaderCardByReaderId(long readerId){
         return readerCardDao.findReaderByReaderId(readerId);
     }
-    public ReaderInfo findReaderInfoByReaderId(long readerId){
-        return readerInfoDao.findReaderInfoByReaderId(readerId);
-    }
 
     public boolean hasMatchAdmin(long adminId,String password){
         return adminDao.getMatchCount(adminId, password) == 1;
@@ -44,6 +37,13 @@ public class LoginService {
         return adminDao.getPassword(adminId);
     }
 
+    public boolean readerRePassword(long readerId, String newPassword) {
+        return readerCardDao.resetPassword(readerId, newPassword) > 0;
+    }
+
+    public String getReaderPassword(long readerId) {
+        return readerCardDao.getPassword(readerId);
+    }
 
 
 }
