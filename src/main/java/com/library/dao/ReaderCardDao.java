@@ -11,7 +11,7 @@ public class ReaderCardDao {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private final static String MATCH_READER_ID_SQL = "select count(*) from reader_card where reader_id = ? and password = ? ";
-    private final static String MATCH_READER_NAME_SQL = "select count(*) from reader_card where username = ? and password = ? ";
+    private final static String GET_PASSWORD_SQL = "select password from reader_card where reader_id = ? ";
     private final static String FIND_READER_BY_USERID = "select * from reader_card where reader_id = ? ";
     private final static String RE_PASSWORD_SQL = "UPDATE reader_card set password = ? where reader_id = ? ";
     private final static String ADD_READERCARD_SQL = "INSERT INTO reader_card values ( ? , ? , ?)";
@@ -41,4 +41,7 @@ public class ReaderCardDao {
         return jdbcTemplate.update(ADD_READERCARD_SQL, readerId, username, password);
     }
 
+    public String getPassword(long readerId) {
+        return jdbcTemplate.queryForObject(GET_PASSWORD_SQL, new Object[]{readerId}, String.class);
+    }
 }

@@ -6,18 +6,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js" ></script>
-    <style>
-        body{
-            background-color: rgb(240,242,245);
-        }
-    </style>
     <script>
         $(function () {
             $('#header').load('admin_header.html');
         })
     </script>
 </head>
-<body>
+<body background="../../static/img/book2.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 <div id="header" style="padding-bottom: 80px"></div>
 
 <div class="col-xs-6 col-md-offset-3">

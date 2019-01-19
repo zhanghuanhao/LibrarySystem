@@ -6,8 +6,8 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <style>
-        body {
-            background-color: rgb(240, 242, 245);
+        .form-group {
+            margin-bottom: 0;
         }
     </style>
     <script>
@@ -16,10 +16,12 @@
         })
     </script>
 </head>
-<body>
+<body background="img/sky.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 
 <div id="header"></div>
-<div style="position: relative;top: 10%;width: 80%;margin-left: 10%">
+<div style="position: relative;padding-top: 60px; width: 80%;margin-left: 10%">
     <form action="book_add_do.html" method="post" id="addbook">
         <div class="form-group">
             <label for="name">图书名</label>
@@ -63,17 +65,12 @@
             <input type="text" class="form-control" name="number" id="number" placeholder="请输入图书数量">
         </div>
 
-
         <input type="submit" value="添加" class="btn btn-success btn-sm" class="text-left">
         <script>
-            function mySubmit(flag) {
-                return flag;
-            }
-
             $("#addbook").submit(function () {
                 if ($("#name").val() == '' || $("#author").val() == '' || $("#publish").val() == '' || $("#isbn").val() == '' || $("#introduction").val() == '' || $("#language").val() == '' || $("#price").val() == '' || $("#pubstr").val() == '' || $("#classId").val() == '' || $("#pressmark").val() == '' || $("#number").val() == '') {
                     alert("请填入完整图书信息！");
-                    return mySubmit(false);
+                    return false;
                 }
             })
         </script>

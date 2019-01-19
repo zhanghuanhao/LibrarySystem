@@ -6,41 +6,18 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-color: rgb(240, 242, 245);
-        }
-    </style>
     <script>
         $(function () {
             $('#header').load('admin_header.html');
         })
     </script>
 </head>
-<body>
+<body background="img/u5.jpeg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 <div id="header"></div>
 
-<div style="padding: 70px 550px 10px">
-    <form method="post" action="querybook.html" class="form-inline" id="searchform">
-        <div class="input-group">
-            <input type="text" placeholder="输入图书名" class="form-control" id="search" name="searchWord"
-                   class="form-control">
-            <span class="input-group-btn">
-                            <input type="submit" value="搜索" class="btn btn-default">
-            </span>
-        </div>
-    </form>
-    <script>
-        $("#searchform").submit(function () {
-            var val = $("#search").val();
-            if (val == '') {
-                alert("请输入关键字");
-                return false;
-            }
-        })
-    </script>
-</div>
-<div style="position: relative;top: 10%">
+<div style="position: relative;padding-top: 100px">
     <c:if test="${!empty succ}">
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert"
@@ -87,8 +64,8 @@
                     <td><c:out value="${alog.lendDate}"></c:out></td>
                     <td><c:out value="${alog.backDate}"></c:out></td>
                     <td>
-                        <a href="deletebook.html?serNum=<c:out value='${alog.ser_num}'></c:out>">
-                            <c:if test="${alog.backDate}">
+                        <a href="deletelend.html?serNum=<c:out value='${alog.ser_num}'></c:out>">
+                            <c:if test="${!empty alog.backDate}">
                                 <button type="button" class="btn btn-danger btn-xs">删除</button>
                             </c:if>
                             <c:if test="${empty alog.backDate}">

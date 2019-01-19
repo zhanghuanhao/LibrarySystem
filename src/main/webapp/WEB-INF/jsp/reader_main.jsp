@@ -5,18 +5,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js" ></script>
-    <style>
-        body{
-            background-color: rgb(240,242,245);
-        }
-    </style>
     <script>
         $(function () {
             $('#header').load('reader_header.html');
         })
     </script>
 </head>
-<body>
+<body background="img/wolf.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 <div id="header"></div>
 
 </body>

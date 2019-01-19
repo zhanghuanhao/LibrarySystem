@@ -1,6 +1,5 @@
 package com.library.web;
 
-import com.library.domain.Book;
 import com.library.domain.ReaderCard;
 import com.library.service.BookService;
 import com.library.service.LendService;
@@ -20,46 +19,15 @@ public class LendController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/lendbook.html")
-    public ModelAndView bookLend(HttpServletRequest request) {
-        long bookId = Integer.parseInt(request.getParameter("bookId"));
-        Book book = bookService.getBook(bookId);
-        ModelAndView modelAndView = new ModelAndView("admin_book_lend");
-        modelAndView.addObject("book", book);
-        return modelAndView;
-    }
-
-    @RequestMapping("/lendbookdo.html")
-    public String bookLendDo(HttpServletRequest request, RedirectAttributes redirectAttributes, long readerId) {
-        long bookId = Long.parseLong(request.getParameter("bookId"));
-        if (lendService.lendBook(bookId, readerId)) {
-            redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
-        } else {
-            redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
-        }
-        return "redirect:/allbooks.html";
-    }
-
-    @RequestMapping("/returnbook.html")
-    public String bookReturn(HttpServletRequest request, RedirectAttributes redirectAttributes, long readerId) {
-        long bookId = Long.parseLong(request.getParameter("bookId"));
-        if (lendService.returnBook(bookId, readerId)) {
-            redirectAttributes.addFlashAttribute("succ", "图书归还成功！");
-        } else {
-            redirectAttributes.addFlashAttribute("error", "图书归还失败！");
-        }
-        return "redirect:/allbooks.html";
-    }
-
     @RequestMapping("/deletebook.html")
     public String deleteBook(HttpServletRequest request, RedirectAttributes redirectAttributes) {
-        long serNum = Long.parseLong(request.getParameter("serNum"));
-        if (lendService.deleteBook(serNum) == 1) {
-            redirectAttributes.addFlashAttribute("succ", "记录删除成功！");
+        long bookId = Long.parseLong(request.getParameter("bookId"));
+        if (bookService.deleteBook(bookId)) {
+            redirectAttributes.addFlashAttribute("succ", "图书删除成功！");
         } else {
-            redirectAttributes.addFlashAttribute("error", "记录删除失败！");
+            redirectAttributes.addFlashAttribute("error", "图书删除失败！");
         }
-        return "redirect:/lendlist.html";
+        return "redirect:/allbooks.html";
     }
 
     @RequestMapping("/lendlist.html")
@@ -75,5 +43,40 @@ public class LendController {
         ModelAndView modelAndView = new ModelAndView("reader_lend_list");
         modelAndView.addObject("list", lendService.myLendList(readerCard.getReaderId()));
         return modelAndView;
+    }
+
+    @RequestMapping("/deletelend.html")
+    public String deleteLend(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        long serNum = Long.parseLong(request.getParameter("serNum"));
+        if (lendService.deleteLend(serNum) > 0) {
+            redirectAttributes.addFlashAttribute("succ", "记录删除成功！");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "记录删除失败！");
+        }
+        return "redirect:/lendlist.html";
+    }
+
+    @RequestMapping("/lendbook.html")
+    public String bookLend(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        long bookId = Long.parseLong(request.getParameter("bookId"));
+        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReaderId();
+        if (lendService.lendBook(bookId, readerId)) {
+            redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
+        } else {
+            redirectAttributes.addFlashAttribute("succ", "图书借阅成功！");
+        }
+        return "redirect:/reader_books.html";
+    }
+
+    @RequestMapping("/returnbook.html")
+    public String bookReturn(HttpServletRequest request, RedirectAttributes redirectAttributes) {
+        long bookId = Long.parseLong(request.getParameter("bookId"));
+        long readerId = ((ReaderCard) request.getSession().getAttribute("readercard")).getReaderId();
+        if (lendService.returnBook(bookId, readerId)) {
+            redirectAttributes.addFlashAttribute("succ", "图书归还成功！");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "图书归还失败！");
+        }
+        return "redirect:/reader_books.html";
     }
 }

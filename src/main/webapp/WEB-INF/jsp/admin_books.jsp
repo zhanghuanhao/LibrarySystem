@@ -6,18 +6,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.min.js" ></script>
-    <style>
-        body{
-            background-color: rgb(240,242,245);
-        }
-    </style>
     <script>
         $(function () {
             $('#header').load('admin_header.html');
         })
     </script>
 </head>
-<body>
+<body background="img/book1.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 
 <div id="header"></div>
 
@@ -76,7 +73,6 @@
                 <th>ISBN</th>
                 <th>价格</th>
                 <th>剩余数量</th>
-                <th>借还</th>
                 <th>详情</th>
                 <th>编辑</th>
                 <th>删除</th>
@@ -91,15 +87,6 @@
                 <td><c:out value="${book.isbn}"></c:out></td>
                 <td><c:out value="${book.price}"></c:out></td>
                 <td><c:out value="${book.number}"></c:out></td>
-
-                <c:if test="${book.number>0}">
-                    <td><a href="lendbook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-primary btn-xs">借阅</button></a></td>
-                </c:if>
-                <c:if test="${book.number==0}">
-                    <td>
-                        <button type="button" class="btn btn-defalut btn-xs" disabled="disabled">已空</button>
-                    </td>
-                </c:if>
                 <td><a href="bookdetail.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-success btn-xs">详情</button></a></td>
                 <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
                 <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
@@ -109,6 +96,5 @@
         </table>
     </div>
 </div>
-
 </body>
 </html>

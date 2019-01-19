@@ -17,20 +17,26 @@
             display: block;
             position: center;
         }
+
+        .form-group {
+            margin-bottom: 0;
+        }
         * {
             padding:0;
             margin:0;
         }
     </style>
 </head>
-<body>
+<body background="img/timg.jpg" style=" background-repeat:no-repeat ;
+background-size:100% 100%;
+background-attachment: fixed;">
 <c:if test="${!empty error}">
     <script>
             alert("${error}");
             window.location.href="login.html";
 </script>
 </c:if>
-<h2 style="text-align: center;font-family: 'Adobe 楷体 Std R';color: #105cb6">图 书 馆</h2>
+<h2 style="text-align: center; color: white; font-family: '华文行楷'; font-size: 500%">图 书 馆</h2>
 
 <div class="panel panel-default" id="login">
     <div class="panel-heading" style="background-color: #fff">
@@ -49,7 +55,6 @@
             <label>
                 <input type="checkbox" id="remember">记住密码
             </label>
-            <a style="margin-left: 100px" href="#">忘记密码?</a>
         </div>
 
         <p style="text-align: right;color: red;position: absolute" id="info"></p><br/>
