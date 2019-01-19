@@ -65,7 +65,7 @@ VALUES
 	( 22, '综合' );
 CREATE TABLE `lend_list` (
 	`ser_num` BIGINT NOT NULL PRIMARY KEY,
-	`book_id` VARCHAR ( 15 ) NOT NULL,
+	`book_id` BIGINT NOT NULL,
 	`reader_id` BIGINT NOT NULL,
 	`lend_date` date DEFAULT NULL,
 	`back_date` date DEFAULT NULL 
