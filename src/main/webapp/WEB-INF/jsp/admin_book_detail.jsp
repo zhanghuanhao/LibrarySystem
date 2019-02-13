@@ -5,7 +5,7 @@
     <title>《 ${detail.name}》</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.2.1.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
     <script>
         $(function () {
             $('#header').load('admin_header.html');
@@ -24,6 +24,7 @@ background-attachment: fixed;">
         </div>
         <div class="panel-body">
             <table class="table table-hover">
+                <tbody>
                 <tr>
                     <th width="15%">书名</th>
                     <td>${detail.name}</td>
@@ -62,7 +63,7 @@ background-attachment: fixed;">
                 </tr>
                 <tr>
                     <th>数量</th>
-                        <td>${detail.number}</td>
+                    <td>${detail.number}</td>
                 </tr>
                 </tbody>
             </table>

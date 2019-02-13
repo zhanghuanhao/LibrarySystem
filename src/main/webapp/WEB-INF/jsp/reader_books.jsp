@@ -112,7 +112,7 @@ background-attachment: fixed;">
                             </td>
                         </c:if>
                     </c:if>
-                    <td><a href="bookdetail.html?bookId=<c:out value="${book.bookId}"></c:out>">
+                    <td><a href="reader_book_detail.html?bookId=<c:out value="${book.bookId}"></c:out>">
                         <button type="button" class="btn btn-success btn-xs">详情</button>
                     </a></td>
                 </tr>

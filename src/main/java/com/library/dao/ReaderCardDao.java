@@ -1,7 +1,7 @@
 package com.library.dao;
 
-import com.library.domain.ReaderCard;
-import com.library.domain.ReaderInfo;
+import com.library.bean.ReaderCard;
+import com.library.bean.ReaderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

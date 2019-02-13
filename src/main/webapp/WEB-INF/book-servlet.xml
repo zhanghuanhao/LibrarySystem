@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.0.xsd ">
     <!-- 扫描web包，应用Spring的注解 -->
-    <context:component-scan base-package="com.library.web"/>
+    <context:component-scan base-package="com.library.controller"/>
 
     <!-- 配置视图解析器，将ModelAndView及字符串解析为具体的页面 -->
     <bean

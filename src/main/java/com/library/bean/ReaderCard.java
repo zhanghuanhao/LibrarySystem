@@ -1,27 +1,27 @@
-package com.library.domain;
+package com.library.bean;
 
 import java.io.Serializable;
 
 public class ReaderCard implements Serializable {
 
-    private long readerId;
-    private String name;
+    private long reader_id;
+    private String username;
     private String password;
 
     public long getReaderId() {
-        return readerId;
+        return reader_id;
     }
 
-    public void setReaderId(long readerId) {
-        this.readerId = readerId;
+    public void setReaderId(long reader_id) {
+        this.reader_id = reader_id;
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

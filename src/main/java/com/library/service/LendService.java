@@ -1,7 +1,7 @@
 package com.library.service;
 
+import com.library.bean.Lend;
 import com.library.dao.LendDao;
-import com.library.domain.Lend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

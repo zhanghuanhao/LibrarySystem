@@ -9012,7 +9012,7 @@ jQuery.extend( {
 		// Extract dataTypes list
 		s.dataTypes = ( s.dataType || "*" ).toLowerCase().match( rnothtmlwhite ) || [ "" ];
 
-		// A cross-domain request is in order when the origin doesn't match the current origin.
+        // A cross-bean request is in order when the origin doesn't match the current origin.
 		if ( s.crossDomain == null ) {
 			urlAnchor = document.createElement( "a" );
 
@@ -9445,7 +9445,7 @@ support.ajax = xhrSupported = !!xhrSupported;
 jQuery.ajaxTransport( function( options ) {
 	var callback, errorCallback;
 
-	// Cross domain only allowed if supported through XMLHttpRequest
+    // Cross bean only allowed if supported through XMLHttpRequest
 	if ( support.cors || xhrSupported && !options.crossDomain ) {
 		return {
 			send: function( headers, complete ) {
@@ -9473,10 +9473,10 @@ jQuery.ajaxTransport( function( options ) {
 				}
 
 				// X-Requested-With header
-				// For cross-domain requests, seeing as conditions for a preflight are
+                // For cross-bean requests, seeing as conditions for a preflight are
 				// akin to a jigsaw puzzle, we simply never set it to be sure.
 				// (it can always be set on a per-request basis or even using ajaxSetup)
-				// For same-domain requests, won't change header if already provided.
+                // For same-bean requests, won't change header if already provided.
 				if ( !options.crossDomain && !headers[ "X-Requested-With" ] ) {
 					headers[ "X-Requested-With" ] = "XMLHttpRequest";
 				}
@@ -9622,7 +9622,7 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
-	// This transport only deals with cross domain requests
+    // This transport only deals with cross bean requests
 	if ( s.crossDomain ) {
 		var script, callback;
 		return {

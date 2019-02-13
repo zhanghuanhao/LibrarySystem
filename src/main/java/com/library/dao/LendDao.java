@@ -1,10 +1,10 @@
 package com.library.dao;
 
-import com.library.domain.Lend;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.library.bean.Lend;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -13,9 +13,11 @@ import java.util.Date;
 
 @Repository
 public class LendDao {
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+    private final static String NAMESPACE = "com.library.dao.LendDao.";
+    private final SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    @Resource
+    private SqlSessionTemplate sqlSessionTemplate;
 
     private final static String RETURN_BOOK_ONE_SQL = "UPDATE lend_list SET back_date = ? WHERE book_id = ? AND reader_id = ? AND back_date is NULL";
     private final static String RETURN_BOOK_TWO_SQL = "UPDATE book_info SET number = number + 1 WHERE book_id = ? ";

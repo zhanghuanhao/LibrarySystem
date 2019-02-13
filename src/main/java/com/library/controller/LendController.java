@@ -1,6 +1,6 @@
-package com.library.web;
+package com.library.controller;
 
-import com.library.domain.ReaderCard;
+import com.library.bean.ReaderCard;
 import com.library.service.BookService;
 import com.library.service.LendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class LendController {
         } else {
             redirectAttributes.addFlashAttribute("error", "图书删除失败！");
         }
-        return "redirect:/allbooks.html";
+        return "redirect:/admin_books.html";
     }
 
     @RequestMapping("/lendlist.html")

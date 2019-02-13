@@ -1,11 +1,11 @@
-package com.library.domain;
+package com.library.bean;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class ReaderInfo implements Serializable {
 
-    private long readerId;
+    private long reader_id;
     private String name;
     private String sex;
     private Date birth;
@@ -13,11 +13,11 @@ public class ReaderInfo implements Serializable {
     private String phone;
 
     public long getReaderId() {
-        return readerId;
+        return reader_id;
     }
 
-    public void setReaderId(long readerId) {
-        this.readerId = readerId;
+    public void setReaderId(long reader_id) {
+        this.reader_id = reader_id;
     }
 
     public String getName() {

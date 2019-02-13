@@ -1,4 +1,4 @@
-package com.library.web;
+package com.library.controller;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("com.library.web")
+@ComponentScan("com.library.controller")
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Bean

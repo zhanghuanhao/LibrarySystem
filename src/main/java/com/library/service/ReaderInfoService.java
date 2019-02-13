@@ -1,7 +1,7 @@
 package com.library.service;
 
+import com.library.bean.ReaderInfo;
 import com.library.dao.ReaderInfoDao;
-import com.library.domain.ReaderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

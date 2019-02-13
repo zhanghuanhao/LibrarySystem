@@ -1,17 +1,17 @@
-package com.library.domain;
+package com.library.bean;
 
 public class Admin {
 
-    private long adminId;
+    private long admin_id;
     private String password;
     private String username;
 
     public long getAdminId() {
-        return adminId;
+        return admin_id;
     }
 
-    public void setAdminId(long adminId) {
-        this.adminId = adminId;
+    public void setAdminId(long admin_id) {
+        this.admin_id = admin_id;
     }
 
     public String getPassword() {

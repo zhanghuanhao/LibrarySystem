@@ -87,7 +87,9 @@ background-attachment: fixed;">
                 <td><c:out value="${book.isbn}"></c:out></td>
                 <td><c:out value="${book.price}"></c:out></td>
                 <td><c:out value="${book.number}"></c:out></td>
-                <td><a href="bookdetail.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-success btn-xs">详情</button></a></td>
+                <td><a href="admin_book_detail.html?bookId=<c:out value="${book.bookId}"></c:out>">
+                    <button type="button" class="btn btn-success btn-xs">详情</button>
+                </a></td>
                 <td><a href="updatebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-info btn-xs">编辑</button></a></td>
                 <td><a href="deletebook.html?bookId=<c:out value="${book.bookId}"></c:out>"><button type="button" class="btn btn-danger btn-xs">删除</button></a></td>
             </tr>

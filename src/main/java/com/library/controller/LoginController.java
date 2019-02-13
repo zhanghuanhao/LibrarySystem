@@ -1,7 +1,7 @@
-package com.library.web;
+package com.library.controller;
 
-import com.library.domain.Admin;
-import com.library.domain.ReaderCard;
+import com.library.bean.Admin;
+import com.library.bean.ReaderCard;
 import com.library.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,7 +73,6 @@ public class LoginController {
 
     @RequestMapping("/admin_main.html")
     public ModelAndView toAdminMain(HttpServletResponse response) {
-
         return new ModelAndView("admin_main");
     }
 

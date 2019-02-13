@@ -1,8 +1,8 @@
-package com.library.web;
+package com.library.controller;
 
-import com.library.domain.Book;
-import com.library.domain.Lend;
-import com.library.domain.ReaderCard;
+import com.library.bean.Book;
+import com.library.bean.Lend;
+import com.library.bean.ReaderCard;
 import com.library.service.BookService;
 import com.library.service.LendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +85,7 @@ public class BookController {
 
     @RequestMapping("/updatebook.html")
     public ModelAndView bookEdit(HttpServletRequest request) {
-        long bookId = Integer.parseInt(request.getParameter("bookId"));
+        long bookId = Long.parseLong(request.getParameter("bookId"));
         Book book = bookService.getBook(bookId);
         ModelAndView modelAndView = new ModelAndView("admin_book_edit");
         modelAndView.addObject("detail", book);
@@ -103,18 +103,18 @@ public class BookController {
         return "redirect:/admin_books.html";
     }
 
-    @RequestMapping("/bookdetail.html")
-    public ModelAndView bookDetail(HttpServletRequest request) {
-        long bookId = Integer.parseInt(request.getParameter("bookId"));
+    @RequestMapping("/admin_book_detail.html")
+    public ModelAndView adminBookDetail(HttpServletRequest request) {
+        long bookId = Long.parseLong(request.getParameter("bookId"));
         Book book = bookService.getBook(bookId);
         ModelAndView modelAndView = new ModelAndView("admin_book_detail");
         modelAndView.addObject("detail", book);
         return modelAndView;
     }
 
-    @RequestMapping("/readerbookdetail.html")
+    @RequestMapping("/reader_book_detail.html")
     public ModelAndView readerBookDetail(HttpServletRequest request) {
-        long bookId = Integer.parseInt(request.getParameter("bookId"));
+        long bookId = Long.parseLong(request.getParameter("bookId"));
         Book book = bookService.getBook(bookId);
         ModelAndView modelAndView = new ModelAndView("reader_book_detail");
         modelAndView.addObject("detail", book);

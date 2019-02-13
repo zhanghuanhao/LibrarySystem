@@ -1,4 +1,4 @@
-package com.library.domain;
+package com.library.bean;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -6,24 +6,24 @@ import java.util.Date;
 
 public class Book implements Serializable {
 
-    private long bookId;
+    private long book_id;
     private String name;
     private String author;
     private String publish;
-    private String isbn;
+    private String ISBN;
     private String introduction;
     private String language;
     private BigDecimal price;
-    private Date pubdate;
-    private int classId;
+    private Date pub_date;
+    private int class_id;
     private int number;
 
     public long getBookId() {
-        return bookId;
+        return book_id;
     }
 
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
+    public void setBookId(long book_id) {
+        this.book_id = book_id;
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class Book implements Serializable {
     }
 
     public String getIsbn() {
-        return isbn;
+        return ISBN;
     }
 
     public void setIsbn(String isbn) {
-        this.isbn = isbn;
+        this.ISBN = isbn;
     }
 
     public String getIntroduction() {
@@ -83,19 +83,19 @@ public class Book implements Serializable {
     }
 
     public Date getPubdate() {
-        return pubdate;
+        return pub_date;
     }
 
-    public void setPubdate(Date pubdate) {
-        this.pubdate = pubdate;
+    public void setPubdate(Date pub_date) {
+        this.pub_date = pub_date;
     }
 
     public int getClassId() {
-        return classId;
+        return class_id;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setClassId(int class_id) {
+        this.class_id = class_id;
     }
 
     public int getNumber() {

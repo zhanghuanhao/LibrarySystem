@@ -1,8 +1,8 @@
 package com.library.service;
 
+import com.library.bean.ReaderCard;
 import com.library.dao.AdminDao;
 import com.library.dao.ReaderCardDao;
-import com.library.domain.ReaderCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
