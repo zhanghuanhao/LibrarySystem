@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.BookDao">
+    <insert id="addBook" parameterType="com.library.bean.Book">
+        insert into book_info values
+        (null, #{name}, #{author}, #{publish}, #{ISBN},
+        #{introduction}, #{language}, #{price}, #{pub_date},
+        #{class_id}, #{number})
+    </insert>
+    <update id="editBook" parameterType="com.library.bean.Book">
+        update book_info set name=#{name}, author=#{author},
+        publish=#{publish}, ISBN=#{ISBN}, introduction=#{introduction},
+        language=#{language}, price=#{price}, pub_date=#{pub_date},
+        class_id=#{class_id}, number=#{number} where book_id=#{book_id}
+    </update>
+    <select id="getAllBooks" resultType="com.library.bean.Book">
+        select * from book_info
+    </select>
+    <select id="queryBook" resultType="com.library.bean.Book" parameterType="String">
+        select * from book_info where name like #{search}
+        or author like #{search} or introduction like #{search}
+    </select>
+    <select id="matchBook" resultType="int" parameterType="String">
+        select count(*) from book_info where name like #{search}
+        or author like #{search} or introduction like #{search}
+    </select>
+    <select id="getBook" resultType="com.library.bean.Book" parameterType="long">
+        select * from book_info where book_id = #{book_id}
+    </select>
+    <delete id="deleteBook" parameterType="long">
+        delete from book_info where book_id = #{book_id}
+    </delete>
+</mapper>

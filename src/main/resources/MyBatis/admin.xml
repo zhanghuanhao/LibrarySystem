@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.AdminDao">
+    <select id="getMatchCount" resultType="int" parameterType="com.library.bean.Admin">
+        select count(*) from admin
+        where admin_id = #{admin_id}
+        and password = #{password}
+    </select>
+    <update id="resetPassword" parameterType="com.library.bean.Admin">
+        update admin set password = #{password}
+        where admin_id = #{admin_id}
+    </update>
+    <select id="getPassword" resultType="String" parameterType="long">
+        select password from admin where admin_id = #{admin_id}
+    </select>
+    <select id="getUsername" resultType="String" parameterType="long">
+        select username from admin where admin_id = #{admin_id}
+    </select>
+</mapper>
