@@ -5,11 +5,11 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class LendDao {
@@ -27,55 +27,40 @@ public class LendDao {
     private final static String MY_LEND_LIST_SQL = "SELECT * FROM lend_list WHERE reader_id = ? ";
     private final static String DELETE_LEND_SQL = "DELETE FROM lend_list WHERE ser_num = ?";
 
-    public int returnBookOne(long bookId, long readerId) {
-        return jdbcTemplate.update(RETURN_BOOK_ONE_SQL, df.format(new Date()), bookId, readerId);
+    public int returnBookOne(final long book_id, long reader_id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("book_id", book_id);
+        map.put("reader_id", reader_id);
+        //map.put("back_date", df.format(new Date()));
+        return sqlSessionTemplate.update(NAMESPACE + "returnBookOne", map);
     }
 
-    public int returnBookTwo(long bookId) {
-        return jdbcTemplate.update(RETURN_BOOK_TWO_SQL, bookId);
+    public int returnBookTwo(final long book_id) {
+        return sqlSessionTemplate.update(NAMESPACE + "returnBookTwo", book_id);
     }
 
-    public int lendBookOne(long bookId, long readerId) {
-        return jdbcTemplate.update(LEND_BOOK_ONE_SQL, bookId, readerId, df.format(new Date()));
+    public int lendBookOne(final long book_id, final long reader_id) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("book_id", book_id);
+        map.put("reader_id", reader_id);
+        return sqlSessionTemplate.insert(NAMESPACE + "lendBookOne", map);
     }
 
-    public int lendBookTwo(long bookId) {
-        return jdbcTemplate.update(LEND_BOOK_TWO_SQL, bookId);
-    }
-
-    private Lend getLendFromResult(ResultSet resultSet) throws SQLException {
-        Lend lend = new Lend();
-        lend.setBackDate(resultSet.getDate("back_date"));
-        lend.setBookId(resultSet.getLong("book_id"));
-        lend.setLendDate(resultSet.getDate("lend_date"));
-        lend.setReaderId(resultSet.getInt("reader_id"));
-        lend.setSer_num(resultSet.getLong("ser_num"));
-        return lend;
+    public int lendBookTwo(final long book_id) {
+        return sqlSessionTemplate.update(NAMESPACE + "lendBookTwo", book_id);
     }
 
     public ArrayList<Lend> lendList() {
-        final ArrayList<Lend> list = new ArrayList<>();
-        jdbcTemplate.query(LEND_LIST_SQL, (resultSet) -> {
-            resultSet.beforeFirst();
-            while (resultSet.next()) {
-                list.add(getLendFromResult(resultSet));
-            }
-        });
-        return list;
+        List<Lend> result = sqlSessionTemplate.selectList(NAMESPACE + "lendList");
+        return (ArrayList<Lend>) result;
     }
 
-    public ArrayList<Lend> myLendList(long readerId) {
-        final ArrayList<Lend> list = new ArrayList<>();
-        jdbcTemplate.query(MY_LEND_LIST_SQL, new Object[]{readerId}, (resultSet) -> {
-            resultSet.beforeFirst();
-            while (resultSet.next()) {
-                list.add(getLendFromResult(resultSet));
-            }
-        });
-        return list;
+    public ArrayList<Lend> myLendList(final long reader_id) {
+        List<Lend> result = sqlSessionTemplate.selectList(NAMESPACE + "myLendList", reader_id);
+        return (ArrayList<Lend>) result;
     }
 
-    public int deleteLend(long serNum) {
-        return jdbcTemplate.update(DELETE_LEND_SQL, serNum);
+    public int deleteLend(final long ser_num) {
+        return sqlSessionTemplate.delete(NAMESPACE + "deleteLend", ser_num);
     }
 }
