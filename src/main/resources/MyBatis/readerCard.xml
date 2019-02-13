@@ -19,4 +19,7 @@
         insert into reader_card values
         (#{reader_id}, #{username}, #{password})
     </insert>
+    <delete id="deleteReaderCard" parameterType="long">
+        delete from reader_card where reader_id = #{reader_id}
+    </delete>
 </mapper>

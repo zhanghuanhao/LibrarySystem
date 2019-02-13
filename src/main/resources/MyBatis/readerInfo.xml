@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.library.dao.ReaderInfoDao">
+    <select id="getAllReaderInfo" resultType="com.library.bean.ReaderInfo">
+        select * from reader_info
+    </select>
+    <select id="findReaderInfoByReaderId" resultType="com.library.bean.ReaderInfo" parameterType="long">
+        select * from reader_info where reader_id = #{reader_id}
+    </select>
+    <delete id="deleteReaderInfo" parameterType="long">
+        delete from reader_info where reader_id = #{reader_id}
+    </delete>
+    <update id="editReaderInfo" parameterType="com.library.bean.ReaderInfo">
+        update reader_info set name = #{name} , sex = #{sex},
+        birth = #{birth} ,address = #{address} ,phone = #{phone}
+        where reader_id = #{reader_id}
+    </update>
+    <update id="editReaderCard" parameterType="com.library.bean.ReaderInfo">
+        update reader_card set username = #{name}
+        where reader_id = #{reader_id}
+    </update>
+    <insert id="addReaderInfo" parameterType="com.library.bean.ReaderInfo">
+        insert into reader_info values
+        (null, #{name},#{sex},#{birth},#{address},#{phone})
+    </insert>
+    <select id="getReaderId" resultType="long" parameterType="com.library.bean.ReaderInfo">
+        select reader_id from reader_info where
+        name = #{name} and sex = #{sex} and
+        birth = #{birth} and address = #{address}
+        and phone = #{phone}
+    </select>
+</mapper>

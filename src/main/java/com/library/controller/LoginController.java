@@ -76,12 +76,10 @@ public class LoginController {
         return new ModelAndView("admin_main");
     }
 
-
     @RequestMapping("/reader_main.html")
     public ModelAndView toReaderMain(HttpServletResponse response) {
         return new ModelAndView("reader_main");
     }
-
 
     @RequestMapping("/admin_repasswd.html")
     public ModelAndView reAdminPasswd() {

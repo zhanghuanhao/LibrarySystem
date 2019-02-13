@@ -17,4 +17,7 @@ public class ReaderCardService {
         return readerCardDao.resetPassword(readerId,password)>0;
     }
 
+    public boolean deleteReaderCard(long readerId) {
+        return readerCardDao.deleteReaderCard(readerId) > 0;
+    }
 }

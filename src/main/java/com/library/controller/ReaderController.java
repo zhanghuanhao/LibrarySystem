@@ -57,7 +57,7 @@ public class ReaderController {
     @RequestMapping("reader_delete.html")
     public String readerDelete(HttpServletRequest request, RedirectAttributes redirectAttributes) {
         long readerId = Long.parseLong(request.getParameter("readerId"));
-        if (readerInfoService.deleteReaderInfo(readerId)) {
+        if (readerInfoService.deleteReaderInfo(readerId) && readerCardService.deleteReaderCard(readerId)) {
             redirectAttributes.addFlashAttribute("succ", "删除成功！");
         } else {
             redirectAttributes.addFlashAttribute("error", "删除失败！");

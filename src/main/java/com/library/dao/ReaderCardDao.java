@@ -12,9 +12,10 @@ import java.util.Map;
 @Repository
 public class ReaderCardDao {
 
-    private final static String NAMESPACE = "com.library.dao.ReaderCardDao.";
     @Resource
     private SqlSessionTemplate sqlSessionTemplate;
+
+    private final static String NAMESPACE = "com.library.dao.ReaderCardDao.";
 
     public int getIdMatchCount(final long reader_id, final String password) {
         Map<String, Object> map = new HashMap<>();
@@ -24,7 +25,7 @@ public class ReaderCardDao {
     }
 
     public ReaderCard findReaderByReaderId(final long reader_id) {
-        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderByReaderId");
+        return sqlSessionTemplate.selectOne(NAMESPACE + "findReaderByReaderId", reader_id);
     }
 
     public int resetPassword(final long reader_id, final String newPassword) {
@@ -46,5 +47,9 @@ public class ReaderCardDao {
 
     public String getPassword(final long reader_id) {
         return sqlSessionTemplate.selectOne(NAMESPACE + "getPassword", reader_id);
+    }
+
+    public int deleteReaderCard(final long reader_id) {
+        return sqlSessionTemplate.delete(NAMESPACE + "deleteReaderCard", reader_id);
     }
 }
