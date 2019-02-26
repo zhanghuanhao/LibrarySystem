@@ -88,12 +88,16 @@
 ##### 2.1 图书管理
 * 查看全部图书
 <img src="./preview/7.png">
+
 * 图书详情：
 <img src="./preview/8.png">
+
 * 图书编辑：
 <img src="./preview/9.png">
+
 * 添加新图书：
 <img src="./preview/10.png">
+
 ##### 2.2 读者管理
 * 查看全部读者：
 <img src="./preview/11.png">
