@@ -101,23 +101,32 @@
 ##### 2.2 读者管理
 * 查看全部读者：
 <img src="./preview/11.png">
+
 * 编辑读者：
 <img src="./preview/12.png">
+
 * 添加新读者：
 <img src="./preview/13.png">
+
 ##### 2.3 借还管理
 借还日志，未归还图书的日志无法删除。
 <img src="./preview/14.png">
+
 ##### 2.4 修改密码
 <img src="./preview/15.png">
+
 #### 3.	读者系统
 使用读者账号（如：10000/123456）登陆进入首页：
 <img src="./preview/16.png">
+
 ##### 3.1 查看全部图书，可以根据输入的书名检索书籍：
 <img src="./preview/17.png">
+
 ##### 3.2 个人信息查看，可以修个个人信息
 <img src="./preview/18.png">
+
 ##### 3.3 个人借阅情况查看
 <img src="./preview/19.png">
+
 ##### 3.4 修改密码
 <img src="./preview/20.png">
