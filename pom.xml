@@ -7,7 +7,7 @@
     <groupId>com.library</groupId>
     <artifactId>library</artifactId>
     <version>1.1</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <file.encoding>UTF-8</file.encoding>
@@ -112,6 +112,16 @@
                 <version>3.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <webappDirectory>src/main/webapp</webappDirectory>
+                    <outputDirectory>/var/lib/tomcat9/webapps</outputDirectory>
+                    <warName>library</warName>
                 </configuration>
             </plugin>
         </plugins>
