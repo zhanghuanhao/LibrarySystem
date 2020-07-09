@@ -12,7 +12,7 @@
         })
     </script>
 </head>
-<body background="/img/lizhi.jpg" style=" background-repeat:no-repeat ;
+<body background="img/lizhi.jpg" style=" background-repeat:no-repeat ;
 background-size:100% 100%;
 background-attachment: fixed;">
 <div id="header"></div>
